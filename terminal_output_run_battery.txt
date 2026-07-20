@@ -1,0 +1,66 @@
+=================================================================
+PIRC: Battery SOH - NASA PCoE Dataset
+=================================================================
+
+Loading data from: 5_Battery_Data_Set
+Found 6 data folders
+Dataset: 2750 samples, 34 batteries
+
+=================================================================
+PIRC: BATTERY SOH BENCHMARK
+=================================================================
+Train: 26 batteries, 2072 samples
+Val:   4 batteries: ['B0055', 'B0043', 'B0039', 'B0031']
+Test:  4 batteries: ['B0056', 'B0044', 'B0040', 'B0032']
+Features: 27 (24 sensor + 3 cap lags)
+
+Tuning PIRC on validation batteries...
+Tuning NGRC+RC on validation batteries...
+Best PIRC: res_N=50, seed=0, tier=nvar, lp=1.0, params=10
+Best NGRC+RC: res_N=50, seed=0, params=60
+
+Measuring training times...
+  RC       train time: 0.0881s
+  NGRC+RC  train time: 0.0091s
+  PIRC     train time: 0.0092s
+  PINN     train time: 1.6079s
+
+───────────────────────────────────────────────────────
+Battery B0056: 99 cycles, T=4°C, C: 1.077→1.297 Ah
+  RC      RMSE=0.2256 MAE=0.2189 MAPE=18.6% Corr=0.716 Params=201 Infer=1.449ms (14.6µs/sample)
+  NGRC+RC RMSE=0.0618 MAE=0.0508 MAPE=4.3% Corr=0.648 Params=60 Infer=0.349ms (3.5µs/sample)
+  PIRC    RMSE=0.0347 MAE=0.0262 MAPE=2.2% Corr=0.725 Params=10 Infer=0.013ms (0.1µs/sample)
+  PINN    RMSE=0.2323 MAE=0.2245 MAPE=19.3% Corr=-0.214 Params=3905 Infer=0.103ms (1.0µs/sample)
+
+───────────────────────────────────────────────────────
+Battery B0044: 108 cycles, T=22°C, C: 0.055→1.645 Ah
+  RC      RMSE=0.1458 MAE=0.1067 MAPE=77.8% Corr=0.979 Params=201 Infer=1.580ms (14.6µs/sample)
+  NGRC+RC RMSE=0.1790 MAE=0.0488 MAPE=48.9% Corr=0.966 Params=60 Infer=0.380ms (3.5µs/sample)
+  PIRC    RMSE=0.1924 MAE=0.0406 MAPE=35.8% Corr=0.961 Params=10 Infer=0.013ms (0.1µs/sample)
+  PINN    RMSE=1.0987 MAE=0.8267 MAPE=999.0% Corr=-0.903 Params=3905 Infer=0.111ms (1.0µs/sample)
+
+───────────────────────────────────────────────────────
+Battery B0040: 44 cycles, T=24°C, C: 0.426→1.734 Ah
+  RC      RMSE=0.3080 MAE=0.2726 MAPE=25.6% Corr=0.794 Params=201 Infer=0.643ms (14.6µs/sample)
+  NGRC+RC RMSE=0.2299 MAE=0.1104 MAPE=13.7% Corr=0.841 Params=60 Infer=0.163ms (3.7µs/sample)
+  PIRC    RMSE=0.2459 MAE=0.0668 MAPE=9.4% Corr=0.813 Params=10 Infer=0.012ms (0.3µs/sample)
+  PINN    RMSE=0.7219 MAE=0.7104 MAPE=58.2% Corr=-0.943 Params=3905 Infer=0.047ms (1.1µs/sample)
+
+───────────────────────────────────────────────────────
+Battery B0032: 37 cycles, T=43°C, C: 1.636→1.865 Ah
+  RC      RMSE=0.2358 MAE=0.1532 MAPE=8.5% Corr=0.916 Params=201 Infer=0.541ms (14.6µs/sample)
+  NGRC+RC RMSE=0.0589 MAE=0.0569 MAPE=3.3% Corr=0.971 Params=60 Infer=0.139ms (3.8µs/sample)
+  PIRC    RMSE=0.0141 MAE=0.0121 MAPE=0.7% Corr=0.971 Params=10 Infer=0.012ms (0.3µs/sample)
+  PINN    RMSE=0.6309 MAE=0.6264 MAPE=35.7% Corr=-0.810 Params=3905 Infer=0.042ms (1.1µs/sample)
+
+=================================================================
+OVERALL (mean ± std across 4 test batteries)
+=================================================================
+Model       Mean RMSE     Mean MAE    Mean Corr   Params   Train(s)  Infer(ms)  µs/sample
+──────────────────────────────────────────────────────────────────────────────────────
+RC       0.2288±0.0575 0.1878±0.0631   0.8510      201    0.0881s     1.053ms      14.6µs
+NGRC+RC  0.1324±0.0743 0.0667±0.0254   0.8564       60    0.0091s     0.258ms       3.6µs
+PIRC     0.1218±0.0995 0.0364±0.0202   0.8674       10    0.0092s     0.012ms       0.2µs
+PINN     0.6710±0.3080 0.5970±0.2265  -0.7174     3905    1.6079s     0.076ms       1.1µs
+
+Generating plots...
